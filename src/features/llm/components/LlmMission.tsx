@@ -6,12 +6,14 @@ import { LAYERS, llmCopy, llmLabels } from '../content'
 import { useDepth } from '../hooks/useDepth'
 import DepthLayerCard from './DepthLayerCard'
 import styles from './LlmMission.module.css'
+import VideoSource from './VideoSource'
 
 const LlmMission = () => {
   const t = useT()
   const { depth, canDig, canGoUp, dig, goUp } = useDepth(LAYERS.length)
   return (
     <Mission id="llm" copy={llmCopy}>
+      <VideoSource />
       <div>
         {LAYERS.slice(0, depth).map((layer, i) => (
           <DepthLayerCard key={i} layer={layer} level={i + 1} justOpened={i > 0 && i === depth - 1} />

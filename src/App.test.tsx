@@ -47,8 +47,8 @@ describe('App', () => {
 
   it('opens the next LLM layer when digging', async () => {
     render(<App />)
-    expect(screen.queryByText('Prossimo token')).not.toBeInTheDocument()
+    expect(screen.queryByText('Probabilità, non certezze')).not.toBeInTheDocument()
     await userEvent.click(screen.getByRole('button', { name: 'Scava più a fondo' }))
-    expect(screen.getByText('Prossimo token')).toBeInTheDocument()
+    expect(screen.getByText('Probabilità, non certezze')).toBeInTheDocument()
   })
 })

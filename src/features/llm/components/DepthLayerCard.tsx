@@ -8,6 +8,7 @@ import { RichText } from '@/ui'
 import type { DepthLayer } from '../content'
 import styles from './LlmMission.module.css'
 import NextTokenDemo from './NextTokenDemo'
+import TransformerFlow from './TransformerFlow'
 
 type Props = { layer: DepthLayer; level: number; justOpened: boolean }
 
@@ -44,7 +45,8 @@ const DepthLayerCard = ({ layer, level, justOpened }: Props) => {
           ))}
         </ul>
       )}
-      {layer.demo && <NextTokenDemo />}
+      {layer.demo === 'next-token' && <NextTokenDemo />}
+      {layer.demo === 'transformer' && <TransformerFlow />}
     </div>
   )
 }

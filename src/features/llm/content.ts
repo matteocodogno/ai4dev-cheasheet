@@ -4,8 +4,8 @@ import type { MissionCopy } from '../missions/registry'
 
 export const llmCopy: MissionCopy = {
   lead: {
-    it: 'Una frase per iniziare, poi _scava_ finché ti serve. Ogni strato aggiunge un livello di dettaglio.',
-    en: 'One sentence to start, then _dig_ as deep as you need. Each layer adds a level of detail.',
+    it: 'Il percorso di _Large Language Models explained briefly_ di 3Blue1Brown, in sei strati. Parti dal copione, poi scava finché ti serve.',
+    en: "The path of 3Blue1Brown's _Large Language Models explained briefly_, in six layers. Start from the script, then dig as deep as you need.",
   },
   dos: {
     it: [
@@ -33,6 +33,20 @@ export const llmCopy: MissionCopy = {
   },
 }
 
+export const VIDEO = {
+  url: 'https://www.youtube.com/watch?v=LPZh9BOjkQs',
+  lessonUrl: 'https://www.3blue1brown.com/lessons/mini-llm/',
+  title: 'Large Language Models explained briefly',
+  author: '3Blue1Brown',
+  duration: '8 min',
+  label: { it: 'Guarda il video', en: 'Watch the video' },
+  lesson: { it: 'versione scritta', en: 'written version' },
+  note: {
+    it: "Livelli 1-5 dal video. Il livello 6 è un'aggiunta del corso.",
+    en: 'Layers 1-5 follow the video. Layer 6 is a course addition.',
+  },
+}
+
 export type DepthLayer = {
   title: Localized
   background: string
@@ -40,64 +54,100 @@ export type DepthLayer = {
   /** Either a single paragraph or a list of bullets. RichText markup allowed. */
   body: Localized | LocalizedList
   /** Shows the next-token demo inside this layer. */
-  demo?: true
+  demo?: 'next-token' | 'transformer'
 }
 
 export const LAYERS: readonly DepthLayer[] = [
   {
-    title: { it: 'Superficie', en: 'Surface' },
+    title: { it: 'Il copione strappato', en: 'The torn script' },
     background: '#123a1c',
     color: 'var(--green)',
     body: {
-      it: 'Un LLM è un programma che, dato un testo, **prevede il pezzo di testo successivo**. Ripetuto migliaia di volte, quel singolo trucco produce codice, spiegazioni e piani. Non "sa" cose come un database: ha imparato schemi statistici da enormi quantità di testo e codice.',
-      en: 'An LLM is a program that, given some text, **predicts the next piece of text**. Repeated thousands of times, that single trick produces code, explanations and plans. It doesn\'t "know" things like a database does: it has learned statistical patterns from huge amounts of text and code.',
+      it: [
+        "Immagina un copione: un dialogo tra una persona e un assistente AI, ma le risposte dell'assistente sono state strappate via.",
+        'Ora immagina una macchina che, dato un testo qualsiasi, **prevede la parola successiva**. Le dai il copione, lei propone la prima parola della risposta, la aggiungi al testo e ripeti. Parola dopo parola, la risposta si scrive da sola.',
+        'Un chatbot fa esattamente questo. Un LLM è una **funzione matematica molto sofisticata** che, per qualunque testo, prevede cosa viene dopo.',
+        'Il "copione" iniziale che descrive l\'assistente è quello che oggi chiamiamo **system prompt**. Il tuo messaggio viene aggiunto in coda, poi il modello continua a scrivere.',
+      ],
+      en: [
+        "Picture a movie script: a dialogue between a person and an AI assistant, but the assistant's replies have been torn out.",
+        'Now picture a machine that, given any text, **predicts the next word**. You feed it the script, it proposes the first word of the reply, you append it and repeat. Word by word, the reply writes itself.',
+        'A chatbot does exactly this. An LLM is a **very sophisticated mathematical function** that predicts what comes next for any piece of text.',
+        'The opening "script" describing the assistant is what we now call the **system prompt**. Your message is appended to it, then the model keeps writing.',
+      ],
     },
   },
   {
-    title: { it: 'Prossimo token', en: 'Next token' },
+    title: { it: 'Probabilità, non certezze', en: 'Probabilities, not certainties' },
     background: '#0f2c3a',
     color: 'var(--cyan)',
-    demo: true,
+    demo: 'next-token',
     body: {
-      it: 'A ogni passo il modello produce una **distribuzione di probabilità** su tutti i token possibili, poi ne sceglie uno (sampling). La **temperature** decide quanto osare: bassa = scelte prevedibili, alta = più varietà e più errori. Provalo qui sotto.',
-      en: 'At every step the model produces a **probability distribution** over all possible tokens, then picks one (sampling). **Temperature** decides how bold to be: low = predictable choices, high = more variety and more mistakes. Try it below.',
+      it: 'Il modello non sceglie una parola con certezza: assegna una **probabilità a ogni parola possibile**. Se prendesse sempre la più probabile il testo suonerebbe meccanico, quindi a volte ne pesca una meno probabile. Per questo, anche se la funzione è deterministica, **lo stesso prompt dà risposte diverse**. La **temperature** regola quanto osare. Provalo qui sotto.',
+      en: "The model doesn't pick one word with certainty: it assigns a **probability to every possible word**. Always taking the most likely one sounds mechanical, so it sometimes draws a less likely one. That's why, even though the function is deterministic, **the same prompt gives different answers**. **Temperature** sets how bold to be. Try it below.",
     },
   },
   {
-    title: { it: 'Dentro il modello', en: 'Inside the model' },
+    title: { it: 'Come impara', en: 'How it learns' },
     background: '#24123a',
     color: 'var(--purple)',
     body: {
       it: [
-        '**Token → embedding**: ogni token diventa un vettore di migliaia di numeri che ne cattura il "significato".',
-        '**Transformer**: decine di strati che rielaborano quei vettori. Il pezzo chiave è l\'**attention**: ogni token "guarda" tutti i precedenti e decide quali contano. È per questo che il contesto conta così tanto.',
-        '**Pesi (weights)**: miliardi di parametri numerici. Sono il modello. "Open weight" significa che puoi scaricare proprio questi.',
-        "Il costo dell'attention cresce con la lunghezza del contesto: più contesto = più lento, più caro, e più facile che l'informazione importante si perda in mezzo.",
+        "**Parametri (o pesi)**: pensali come le manopole di una macchina enorme. Il comportamento del modello dipende solo da questi valori, e i modelli grandi ne hanno **centinaia di miliardi**. Nessuno li imposta a mano: partono casuali, e all'inizio il modello produce solo parole a caso.",
+        "**Un passo di addestramento**: prendi un testo, nascondi l'ultima parola, fai prevedere al modello quella parola e confrontala con quella vera.",
+        "**Backpropagation**: l'algoritmo che ritocca tutte le manopole di poco, così la parola giusta diventa un po' più probabile e tutte le altre un po' meno.",
+        'Ripeti su **trilioni** di esempi e il modello diventa bravo sul testo che ha visto e sorprendentemente ragionevole su quello che non ha mai visto.',
+        '**La scala**: leggere senza sosta il testo usato per addestrare GPT-3 richiederebbe a una persona **più di 2.600 anni**, e i modelli più recenti ne usano molto di più.',
+        '**Il calcolo**: con un miliardo di somme e moltiplicazioni al secondo, addestrare i modelli più grandi richiederebbe **ben oltre 100 milioni di anni**. Si può fare solo grazie alle **GPU**, chip progettati per fare moltissime operazioni in parallelo.',
       ],
       en: [
-        '**Token → embedding**: each token becomes a vector of thousands of numbers that captures its "meaning".',
-        '**Transformer**: dozens of layers that rework those vectors. The key piece is **attention**: each token "looks at" all the previous ones and decides which matter. That\'s why context matters so much.',
-        '**Weights**: billions of numeric parameters. They are the model. "Open weight" means you can download exactly these.',
-        'Attention cost grows with context length: more context = slower, more expensive, and more likely that important information gets lost in the middle.',
+        "**Parameters (or weights)**: think of them as the dials of a huge machine. The model's behaviour depends only on these values, and large models have **hundreds of billions** of them. Nobody sets them by hand: they start random, and at first the model just outputs gibberish.",
+        '**One training step**: take a text, hide the last word, have the model predict it and compare with the true word.',
+        '**Backpropagation**: the algorithm that nudges every dial slightly, so the right word becomes a bit more likely and every other word a bit less.',
+        'Repeat over **trillions** of examples and the model gets good on the text it has seen and surprisingly reasonable on text it has never seen.',
+        "**The scale**: reading GPT-3's training text non-stop would take a person **over 2,600 years**, and newer models use far more.",
+        "**The compute**: at one billion additions and multiplications per second, training the largest models would take **well over 100 million years**. It's only possible thanks to **GPUs**, chips built to run huge numbers of operations in parallel.",
       ],
     },
   },
   {
-    title: { it: 'Come nasce', en: "How it's made" },
+    title: { it: 'Da completatore ad assistente', en: 'From autocompleter to assistant' },
     background: '#3a2412',
     color: 'var(--orange)',
     body: {
       it: [
-        '**Pre-training**: prevedere il token successivo su trilioni di token. Ne esce un "completatore" bravissimo ma non un assistente.',
-        '**Fine-tuning su istruzioni**: esempi di domanda e risposta lo trasformano in assistente.',
-        '**RL da feedback** (umano o automatico, es. test che passano): lo allinea a cosa è utile, sicuro, corretto. Qui nascono le capacità agentiche e di uso dei tool.',
-        '**Knowledge cutoff**: dopo una certa data il modello non sa nulla. Le API e le librerie nuove vanno date nel contesto.',
+        'Tutto quello visto finora è il **pre-training**: il modello impara a completare testo preso da internet. Ma completare internet non è la stessa cosa che essere un buon assistente.',
+        "Per questo c'è una seconda fase: **RLHF** (reinforcement learning from human feedback). Persone vere segnalano le risposte inutili o problematiche, e le loro correzioni spostano i parametri verso le risposte che gli utenti preferiscono.",
+        'Conseguenza pratica: il modello è ottimizzato per dare risposte **gradite e plausibili**, non per verificare che siano vere. La verifica tocca a te (e ai tuoi test).',
       ],
       en: [
-        '**Pre-training**: predicting the next token over trillions of tokens. The result is an excellent "autocompleter", not an assistant.',
-        '**Instruction fine-tuning**: question and answer examples turn it into an assistant.',
-        '**RL from feedback** (human or automatic, e.g. passing tests): aligns it with what is useful, safe and correct. This is where agentic and tool-use skills come from.',
-        '**Knowledge cutoff**: after a certain date the model knows nothing. New APIs and libraries must be provided in context.',
+        'Everything so far is **pre-training**: the model learns to auto-complete text taken from the internet. But auto-completing the internet is not the same as being a good assistant.',
+        "So there's a second stage: **RLHF** (reinforcement learning from human feedback). Real people flag unhelpful or problematic replies, and their corrections shift the parameters toward the replies users prefer.",
+        "Practical consequence: the model is optimised to give **pleasing, plausible** answers, not to check they're true. Verification is on you (and your tests).",
+      ],
+    },
+  },
+  {
+    title: { it: 'Dentro il transformer', en: 'Inside the transformer' },
+    background: '#2a1040',
+    color: '#d08cff',
+    demo: 'transformer',
+    body: {
+      it: [
+        'Fino al 2017 i modelli leggevano il testo **una parola alla volta**. Il **transformer**, introdotto da ricercatori di Google, lo legge **tutto insieme, in parallelo**: è quello che rende utili le GPU.',
+        "**Embedding**: ogni parola diventa una lunga lista di numeri, perché l'addestramento funziona solo con valori continui. Quei numeri codificano il significato della parola.",
+        '**Attention**: le liste di numeri si "parlano" e si correggono a vicenda in base al contesto. "Pesca" in "ho mangiato una pesca matura" e in "andiamo a pesca sul fiume" parte uguale ed esce diversa.',
+        "**Feed-forward (MLP)**: una rete neurale che dà al modello spazio per memorizzare gli schemi imparati durante l'addestramento.",
+        "Attention e feed-forward si ripetono per **molti strati**. Alla fine, l'ultimo vettore della sequenza, ormai carico di contesto, produce la probabilità di ogni parola successiva.",
+        '**Comportamento emergente**: i ricercatori progettano la struttura, ma il comportamento nasce dalla taratura di centinaia di miliardi di parametri. Per questo è molto difficile spiegare **perché** un modello fa proprio quella previsione.',
+      ],
+      en: [
+        "Until 2017 models read text **one word at a time**. The **transformer**, introduced by researchers at Google, takes it in **all at once, in parallel**: that's what makes GPUs pay off.",
+        "**Embeddings**: each word becomes a long list of numbers, because training only works with continuous values. Those numbers encode the word's meaning.",
+        '**Attention**: the lists of numbers "talk" to each other and refine their meaning from the context. "Bank" in "they jumped into the river bank" and in "the bank raised rates" starts the same and comes out different.',
+        '**Feed-forward (MLP)**: a neural network that gives the model room to store the patterns learned during training.',
+        'Attention and feed-forward repeat for **many layers**. In the end, the last vector of the sequence, now loaded with context, produces the probability of every possible next word.',
+        "**Emergent behaviour**: researchers design the framework, but the behaviour comes from how hundreds of billions of parameters get tuned. That's why it's so hard to explain **why** a model makes exactly the prediction it does.",
       ],
     },
   },
@@ -108,19 +158,36 @@ export const LAYERS: readonly DepthLayer[] = [
     body: {
       it: [
         '**Allucinazioni**: il modello genera ciò che è plausibile, non ciò che è vero. Un metodo inesistente "suona" giusto quanto uno reale. Antidoto: test, compilatore, tool che verificano.',
-        '**Non determinismo**: stesso prompt, risposte diverse. Progetta il workflow perché sia verificabile, non ripetibile.',
+        '**Knowledge cutoff**: dopo una certa data il modello non sa nulla. Le API e le librerie nuove vanno date nel contesto.',
         '**Reasoning / thinking**: alcuni modelli "ragionano" generando token intermedi prima della risposta. Più qualità sui problemi difficili, più token pagati.',
-        '**Context rot**: oltre una certa soglia di riempimento la qualità cala, anche se tecnicamente "ci sta".',
+        '**Context rot**: più testo dai all\'attention, più l\'informazione importante si diluisce. Oltre una certa soglia la qualità cala, anche se tecnicamente "ci sta".',
       ],
       en: [
         '**Hallucinations**: the model generates what is plausible, not what is true. A non-existent method "sounds" as right as a real one. Antidote: tests, the compiler, tools that verify.',
-        '**Non-determinism**: same prompt, different answers. Design the workflow to be verifiable, not repeatable.',
+        '**Knowledge cutoff**: after a certain date the model knows nothing. New APIs and libraries must be provided in context.',
         '**Reasoning / thinking**: some models "reason" by generating intermediate tokens before answering. Better quality on hard problems, more tokens paid.',
-        '**Context rot**: past a certain fill level quality drops, even if it technically "fits".',
+        '**Context rot**: the more text you give attention, the more the important information gets diluted. Past a certain point quality drops, even if it technically "fits".',
       ],
     },
   },
 ]
+
+/** Stages of the transformer pipeline shown under layer 5. */
+export const TRANSFORMER_FLOW: readonly { label: Localized; color: string; repeat?: true }[] = [
+  { label: { it: 'testo', en: 'text' }, color: 'var(--paper)' },
+  { label: { it: 'embedding', en: 'embeddings' }, color: 'var(--cyan)' },
+  { label: { it: 'attention', en: 'attention' }, color: 'var(--magenta)', repeat: true },
+  { label: { it: 'feed-forward', en: 'feed-forward' }, color: 'var(--yellow)', repeat: true },
+  {
+    label: { it: 'probabilità della parola successiva', en: 'next-word probabilities' },
+    color: 'var(--green)',
+  },
+]
+
+export const transformerLabels = {
+  repeat: { it: '× molti strati', en: '× many layers' },
+  aria: { it: 'Pipeline del transformer', en: 'Transformer pipeline' },
+}
 
 export const llmLabels = {
   depth: { it: 'PROFONDITÀ', en: 'DEPTH' },
