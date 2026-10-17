@@ -1,0 +1,38 @@
+.panel {
+  background: var(--panel);
+  border: var(--outline) solid var(--ink);
+  box-shadow: 8px 8px 0 var(--panel-shadow, var(--ink));
+  padding: 22px;
+  position: relative;
+  min-width: 0;
+}
+
+.paper {
+  background: var(--paper);
+  color: var(--paper-ink);
+}
+
+.paper :global(code) {
+  background: #fff8;
+  color: #7a0e3c;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 30px;
+  letter-spacing: 1px;
+  margin: 0 0 10px;
+  color: var(--panel-title, var(--yellow));
+  -webkit-text-stroke: 1px var(--ink);
+}
+
+.paper .title {
+  color: var(--panel-title, var(--magenta));
+}
+
+@media (max-width: 600px) {
+  .panel {
+    padding: 16px;
+  }
+}

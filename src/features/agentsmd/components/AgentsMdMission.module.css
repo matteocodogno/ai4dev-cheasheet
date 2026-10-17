@@ -1,0 +1,103 @@
+.tree {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1.7;
+  background: var(--terminal);
+  border: 3px solid var(--ink);
+  padding: 14px 16px;
+  white-space: pre;
+  overflow-x: auto;
+  margin: 0;
+}
+
+.file {
+  all: unset;
+  color: var(--ink);
+  padding: 0 3px;
+  cursor: pointer;
+}
+
+.file:focus-visible {
+  outline: 3px solid #fff;
+}
+
+.note {
+  font-family: var(--font-marker);
+  color: var(--cyan);
+  font-size: 18px;
+  transform: rotate(-1deg);
+  display: inline-block;
+  margin-top: 16px;
+}
+
+.levels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: var(--outline) solid var(--ink);
+  box-shadow: var(--shadow);
+  margin-top: 22px;
+}
+
+.level {
+  padding: 18px;
+  position: relative;
+  color: var(--ink);
+}
+
+.level + .level {
+  border-left: var(--outline) solid var(--ink);
+}
+
+.level code {
+  color: var(--ink);
+  background: #fff6;
+}
+
+.levelTitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 28px;
+  margin: 0 0 4px;
+  letter-spacing: 1px;
+}
+
+.path {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0.75;
+  margin-bottom: 10px;
+  word-break: break-all;
+}
+
+.level ul {
+  font-size: 17px;
+}
+
+.pulse {
+  animation: pulse 0.7s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.03) rotate(-0.6deg);
+    z-index: 2;
+    box-shadow: 0 0 0 6px #fff;
+  }
+  100% {
+    transform: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .levels {
+    grid-template-columns: 1fr;
+  }
+  .level + .level {
+    border-left: 0;
+    border-top: var(--outline) solid var(--ink);
+  }
+}

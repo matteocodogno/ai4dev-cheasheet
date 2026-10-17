@@ -1,0 +1,88 @@
+.bar {
+  display: flex;
+  height: 64px;
+  border: var(--outline) solid var(--ink);
+  box-shadow: var(--shadow);
+  background: var(--panel-raised);
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+.block {
+  all: unset;
+  height: 100%;
+  border-right: 3px solid var(--ink);
+  cursor: pointer;
+  transition: filter 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--ink);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.block:hover,
+.on {
+  filter: brightness(1.25) saturate(1.2);
+}
+
+.block:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: -3px;
+}
+
+.free {
+  height: 100%;
+  background: repeating-linear-gradient(45deg, var(--panel-raised) 0 10px, #36203f 10px 20px);
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 6px 16px;
+  margin-top: 16px;
+  font-size: 16px;
+}
+
+.legendItem {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.legendItem:focus-visible {
+  outline: 3px solid var(--yellow);
+}
+
+.swatch {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--ink);
+  flex: none;
+}
+
+.k {
+  color: var(--muted);
+}
+
+.info {
+  margin-top: 14px;
+  min-height: 3.2em;
+  background: var(--paper);
+  color: var(--paper-ink);
+  border: 3px solid var(--ink);
+  padding: 10px 14px;
+}

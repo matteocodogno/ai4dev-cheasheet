@@ -1,0 +1,13 @@
+.cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 22px;
+}
+
+.cols > * {
+  min-width: 0;
+}
+
+.spaced {
+  margin-top: 24px;
+}

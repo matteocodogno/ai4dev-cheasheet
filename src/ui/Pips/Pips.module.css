@@ -1,0 +1,26 @@
+.pips {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.pip {
+  width: var(--pip-w, 20px);
+  height: 10px;
+  border: 2px solid var(--ink);
+  background: #3a2446;
+  transform: skewX(-15deg);
+}
+
+.on {
+  background: var(--orange);
+}
+.current {
+  background: var(--yellow);
+}
+.good {
+  background: var(--green);
+}
+.bad {
+  background: var(--red);
+}

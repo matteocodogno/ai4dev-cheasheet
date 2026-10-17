@@ -1,0 +1,42 @@
+/* Design tokens. Every colour, font and shadow used by the UI comes from here. */
+:root {
+  --ink: #000;
+  --night: #1c0b26;
+  --panel: #170a1f;
+  --panel-raised: #2b1a33;
+  --terminal: #07040a;
+  --paper: #f3e7c8;
+  --paper-ink: #1d1020;
+
+  --yellow: #ffd21f;
+  --magenta: #ff2e7e;
+  --cyan: #2be0e8;
+  --orange: #ff8a00;
+  --purple: #b05cff;
+  --green: #7cff3c;
+  --blue: #3d8bff;
+  --red: #ff3b3b;
+  --pink: #ff7aa9;
+
+  --text: #f6efe0;
+  --muted: #c9b8d6;
+
+  /* rarity scale: content depth of each mission */
+  --rarity-common: #f6efe0;
+  --rarity-uncommon: var(--green);
+  --rarity-rare: var(--blue);
+  --rarity-epic: var(--purple);
+  --rarity-legendary: var(--orange);
+
+  --outline: 4px;
+  --shadow: 8px 8px 0 var(--ink);
+  --shadow-sm: 4px 4px 0 var(--ink);
+
+  --font-display: 'Bangers', Impact, sans-serif;
+  --font-body: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  --font-marker: 'Permanent Marker', cursive;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --content-width: 1200px;
+  --gutter: 16px;
+}

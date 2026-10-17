@@ -1,0 +1,26 @@
+.group {
+  display: flex;
+  border: 3px solid var(--ink);
+  box-shadow: 0 0 0 2px var(--yellow);
+  transform: skewX(-10deg);
+}
+
+.btn {
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 1px;
+  background: var(--panel-raised);
+  color: var(--muted);
+  border: 0;
+  padding: 1px 10px;
+  cursor: pointer;
+}
+
+.btn + .btn {
+  border-left: 3px solid var(--ink);
+}
+
+.btn[aria-pressed='true'] {
+  background: var(--yellow);
+  color: var(--ink);
+}

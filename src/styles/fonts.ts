@@ -1,0 +1,10 @@
+// Self-hosted fonts: no request to Google at runtime (GDPR-friendly, works offline in class).
+import '@fontsource/bangers'
+import '@fontsource/permanent-marker'
+import '@fontsource/barlow-semi-condensed/400.css'
+import '@fontsource/barlow-semi-condensed/500.css'
+import '@fontsource/barlow-semi-condensed/600.css'
+import '@fontsource/barlow-semi-condensed/700.css'
+import '@fontsource/barlow-semi-condensed/800.css'
+import '@fontsource/jetbrains-mono/400.css'
+import '@fontsource/jetbrains-mono/600.css'

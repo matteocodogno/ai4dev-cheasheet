@@ -1,0 +1,82 @@
+.select {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 20px var(--gutter) 40px;
+  scroll-margin-top: 60px;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 44px;
+  letter-spacing: 1px;
+  margin: 0 0 18px;
+  -webkit-text-stroke: 1.5px var(--ink);
+  text-shadow: 4px 4px 0 var(--ink);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card {
+  display: block;
+  text-decoration: none;
+  color: var(--text);
+  background: var(--panel);
+  border: 3px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
+  padding: 12px 14px 12px 18px;
+  position: relative;
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 7px;
+  background: var(--r);
+}
+
+.card:hover {
+  transform: translate(-3px, -3px) rotate(-1deg);
+  box-shadow: 9px 9px 0 var(--r);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: 1px;
+  display: block;
+  line-height: 1.05;
+}
+
+.rarity {
+  color: var(--r);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.num {
+  position: absolute;
+  right: 10px;
+  top: 6px;
+  font-family: var(--font-display);
+  font-size: 30px;
+  color: #ffffff22;
+}
+
+.seen .num {
+  color: var(--r);
+  opacity: 0.6;
+}

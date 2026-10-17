@@ -1,0 +1,4 @@
+# Cloudflare Pages project. Deploy with `pnpm cf:deploy` (or let the Git integration build on push).
+name = "ai4dev-cheatsheet"
+compatibility_date = "2026-10-01"
+pages_build_output_dir = "dist"

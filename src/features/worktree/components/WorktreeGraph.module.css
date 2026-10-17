@@ -1,0 +1,65 @@
+.svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #120818;
+  border: var(--outline) solid var(--ink);
+  box-shadow: var(--shadow);
+}
+
+.lane {
+  fill: none;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+.commit {
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+
+.lbl {
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 0.8px;
+}
+
+.agent {
+  font-family: var(--font-marker);
+  font-size: 14px;
+}
+
+.later {
+  opacity: 0;
+}
+
+.play .lane {
+  animation: draw 2.4s ease forwards;
+}
+
+.play .later {
+  animation: appear 0.3s forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lane {
+    stroke-dashoffset: 0;
+  }
+  .later {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,37 @@
+.button {
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: 1px;
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  box-shadow: var(--shadow-sm);
+  padding: 4px 16px;
+  cursor: pointer;
+  transform: skewX(-8deg);
+  transition:
+    transform 0.1s,
+    box-shadow 0.1s;
+}
+
+.primary {
+  background: var(--yellow);
+}
+
+.secondary {
+  background: var(--cyan);
+}
+
+.button:hover:not(:disabled) {
+  transform: skewX(-8deg) translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.button:active:not(:disabled) {
+  transform: skewX(-8deg) translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

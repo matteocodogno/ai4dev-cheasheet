@@ -1,0 +1,74 @@
+.term {
+  background: var(--terminal);
+  border: var(--outline) solid var(--ink);
+  box-shadow: var(--shadow);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: #e8e1f0;
+  position: relative;
+  min-width: 0;
+}
+
+.bar {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  padding: 8px 12px;
+  background: #2a1237;
+  border-bottom: 3px solid var(--ink);
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+}
+
+.dot:nth-child(1) {
+  background: var(--red);
+}
+.dot:nth-child(2) {
+  background: var(--yellow);
+}
+.dot:nth-child(3) {
+  background: var(--green);
+}
+
+.title {
+  margin-left: 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.copy {
+  margin-left: auto;
+}
+
+.body {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+  white-space: pre;
+  min-height: 3em;
+}
+
+.body.wrap {
+  white-space: pre-wrap;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* syntax colours, usable by any children */
+.body :global(.p) {
+  color: var(--green);
+}
+.body :global(.c) {
+  color: #8a7a9a;
+}
+.body :global(.k) {
+  color: var(--magenta);
+}
+.body :global(.s) {
+  color: var(--yellow);
+}

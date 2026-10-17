@@ -1,0 +1,41 @@
+.matrix {
+  display: grid;
+  grid-template-columns: 160px 1fr 1fr;
+  border: var(--outline) solid var(--ink);
+  box-shadow: var(--shadow);
+  margin-top: 22px;
+  font-size: 17px;
+}
+
+.matrix > * {
+  padding: 14px;
+  border-right: 3px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
+}
+
+.head {
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 1px;
+  background: var(--ink);
+  color: var(--yellow);
+  font-weight: 400;
+  text-align: left;
+}
+
+.cellTitle {
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: 1px;
+  display: block;
+  font-weight: 400;
+}
+
+@media (max-width: 700px) {
+  .matrix {
+    grid-template-columns: 1fr;
+  }
+  .corner {
+    display: none;
+  }
+}

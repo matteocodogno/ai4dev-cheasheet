@@ -1,0 +1,79 @@
+.svg {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  display: block;
+}
+
+.track {
+  fill: none;
+  stroke: #ffffff33;
+  stroke-width: 10;
+}
+
+.orbit {
+  transform-origin: 220px 220px;
+  animation: spin 6s linear infinite;
+}
+
+.dashes {
+  fill: none;
+  stroke: var(--yellow);
+  stroke-width: 4;
+  stroke-dasharray: 6 16;
+}
+
+.runner {
+  fill: #fff;
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+
+.center {
+  font-family: var(--font-display);
+  font-size: 34px;
+  fill: var(--paper);
+}
+
+.centerSub {
+  font-family: var(--font-marker);
+  font-size: 16px;
+  fill: var(--muted);
+}
+
+.node {
+  cursor: pointer;
+}
+
+.node:focus {
+  outline: none;
+}
+
+.disc {
+  stroke: var(--ink);
+  stroke-width: 4;
+}
+
+.on .disc {
+  stroke: #fff;
+  stroke-width: 5;
+}
+
+.node:focus-visible .disc {
+  stroke: var(--yellow);
+  stroke-width: 7;
+}
+
+.label {
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 0.6px;
+  fill: var(--ink);
+  pointer-events: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,49 @@
+.detail {
+  position: sticky;
+  top: 70px;
+  animation: flash 0.35s;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 34px;
+  letter-spacing: 1px;
+  margin: 6px 0 10px;
+  color: var(--magenta);
+  -webkit-text-stroke: 1px var(--ink);
+}
+
+.flows {
+  font-size: 16px;
+}
+
+.mini {
+  margin-top: 12px;
+  font-size: 16px;
+}
+
+.mini b {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.good b {
+  color: #1f7a0a;
+}
+
+.bad b {
+  color: #c4142c;
+}
+
+@keyframes flash {
+  0% {
+    transform: scale(0.96) rotate(-1deg);
+  }
+  100% {
+    transform: none;
+  }
+}

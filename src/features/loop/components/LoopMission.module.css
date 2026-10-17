@@ -1,0 +1,21 @@
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 440px) minmax(0, 1fr);
+  gap: 26px;
+  align-items: center;
+}
+
+.step {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 30px;
+  letter-spacing: 1px;
+  margin: 0 0 10px;
+  -webkit-text-stroke: 1px var(--ink);
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
