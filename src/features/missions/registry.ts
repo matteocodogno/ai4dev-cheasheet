@@ -7,6 +7,7 @@ export type MissionId =
   | 'llm'
   | 'tokens'
   | 'weights'
+  | 'picker'
   | 'ollama'
   | 'context'
   | 'arsenal'
@@ -71,6 +72,13 @@ export const MISSIONS: readonly MissionMeta[] = [
     title: { it: 'Open vs closed weight', en: 'Open vs closed weight' },
     rarity: 'uncommon',
     accent: 'var(--blue)',
+  },
+  {
+    id: 'picker',
+    nav: { it: 'Scegli il modello', en: 'Pick the model' },
+    title: { it: 'Scegli il modello', en: 'Pick the model' },
+    rarity: 'uncommon',
+    accent: 'var(--cyan)',
   },
   {
     id: 'ollama',

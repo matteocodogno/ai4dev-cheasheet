@@ -1,0 +1,106 @@
+.list {
+  display: grid;
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.card {
+  background: var(--panel-raised);
+  border: var(--outline) solid var(--ink);
+  box-shadow: 6px 6px 0 var(--pick);
+  padding: 16px 18px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 6px 26px;
+  animation: drop 0.45s cubic-bezier(0.2, 1.5, 0.4, 1) backwards;
+}
+
+.card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.head {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 28px;
+  letter-spacing: 1px;
+  margin: 0;
+  color: var(--pick);
+  -webkit-text-stroke: 1px var(--ink);
+}
+
+.examples {
+  grid-column: 1 / -1;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0 0 6px;
+}
+
+.label {
+  display: block;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+}
+
+.why .label {
+  color: var(--green);
+}
+.cond .label {
+  color: var(--yellow);
+}
+.how .label {
+  color: var(--cyan);
+}
+
+.block {
+  font-size: 17px;
+  margin: 0;
+}
+
+.excluded {
+  margin-top: 22px;
+  font-size: 16px;
+  color: var(--muted);
+}
+
+.excluded ul {
+  margin-top: 6px;
+}
+
+.excluded b {
+  color: var(--text);
+}
+
+.none {
+  background: var(--paper);
+  color: var(--paper-ink);
+  border: 3px solid var(--ink);
+  padding: 12px 16px;
+  margin: 0;
+}
+
+@keyframes drop {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) rotate(-1deg);
+  }
+}
+
+@media (max-width: 760px) {
+  .card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
