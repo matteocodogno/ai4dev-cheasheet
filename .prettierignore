@@ -4,3 +4,5 @@ node_modules
 pnpm-lock.yaml
 .wrangler
 legacy
+cloudflare-access/block-page.html
+public/brand
