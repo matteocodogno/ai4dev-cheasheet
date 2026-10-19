@@ -1,6 +1,6 @@
 # AI4Dev Field Manual
 
-Interactive cheatsheet for the AI4Dev course: fourteen "missions" from what an LLM is to spec-driven development, each closing with Dos and Don'ts. Italian and English, comic cel-shaded style, animated.
+Interactive cheatsheet for the AI4Dev course: nineteen "missions" from what an LLM is to code review in the agent era, each closing with Dos and Don'ts. Italian and English, comic cel-shaded style, animated.
 
 ## Stack
 

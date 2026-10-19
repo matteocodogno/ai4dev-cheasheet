@@ -1,0 +1,13 @@
+.body {
+  margin: 0 0 8px;
+}
+
+.line,
+.cost {
+  margin: 4px 0 0;
+  font-size: 16px;
+}
+
+.cost {
+  color: var(--orange);
+}

@@ -13,10 +13,15 @@ export type MissionId =
   | 'arsenal'
   | 'agentsmd'
   | 'loop'
+  | 'orchestration'
   | 'sandbox'
   | 'safety'
   | 'worktree'
   | 'sdd'
+  | 'adr'
+  | 'brownfield'
+  | 'testing'
+  | 'review'
 
 export type MissionMeta = {
   id: MissionId
@@ -116,6 +121,13 @@ export const MISSIONS: readonly MissionMeta[] = [
     accent: 'var(--purple)',
   },
   {
+    id: 'orchestration',
+    nav: { it: 'Agenti e orchestrazione', en: 'Agents and orchestration' },
+    title: { it: 'Agenti e orchestrazione', en: 'Agents and orchestration' },
+    rarity: 'epic',
+    accent: 'var(--purple)',
+  },
+  {
     id: 'sandbox',
     nav: { it: 'Permessi vs sandbox', en: 'Permissions vs sandbox' },
     title: { it: 'Permessi vs sandbox', en: 'Permissions vs sandbox' },
@@ -142,6 +154,34 @@ export const MISSIONS: readonly MissionMeta[] = [
     title: { it: 'Spec driven development', en: 'Spec driven development' },
     rarity: 'legendary',
     accent: 'var(--orange)',
+  },
+  {
+    id: 'adr',
+    nav: { it: 'ADR', en: 'ADR' },
+    title: { it: 'Architecture Decision Record', en: 'Architecture Decision Records' },
+    rarity: 'legendary',
+    accent: 'var(--magenta)',
+  },
+  {
+    id: 'brownfield',
+    nav: { it: 'Progetti brownfield', en: 'Brownfield projects' },
+    title: { it: 'Entrare in un brownfield', en: 'Landing in a brownfield' },
+    rarity: 'legendary',
+    accent: 'var(--magenta)',
+  },
+  {
+    id: 'testing',
+    nav: { it: 'Test e mutation testing', en: 'Tests and mutation testing' },
+    title: { it: 'Test che mordono', en: 'Tests that bite' },
+    rarity: 'legendary',
+    accent: 'var(--magenta)',
+  },
+  {
+    id: 'review',
+    nav: { it: "Review nell'era degli agenti", en: 'Review in the agent era' },
+    title: { it: "Review nell'era degli agenti", en: 'Review in the agent era' },
+    rarity: 'legendary',
+    accent: 'var(--magenta)',
   },
 ]
 

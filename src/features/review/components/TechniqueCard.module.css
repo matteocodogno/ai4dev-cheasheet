@@ -1,0 +1,15 @@
+.body {
+  margin: 0 0 8px;
+}
+
+.evidence {
+  font-family: var(--font-marker);
+  color: var(--yellow);
+  margin: 0 0 8px;
+}
+
+.cost {
+  margin: 0;
+  font-size: 16px;
+  color: var(--orange);
+}

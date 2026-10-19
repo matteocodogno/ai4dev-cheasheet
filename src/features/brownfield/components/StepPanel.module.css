@@ -1,0 +1,47 @@
+.panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+  border: var(--outline) solid var(--ink);
+  box-shadow: 8px 8px 0 var(--step);
+  background: var(--panel);
+  padding: 18px;
+  animation: slide 0.3s ease-out;
+}
+
+.text p {
+  margin: 0 0 8px;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 34px;
+  letter-spacing: 1px;
+  margin: 0 0 8px;
+  color: var(--step);
+  -webkit-text-stroke: 1px var(--ink);
+}
+
+.list {
+  margin: 6px 0 10px;
+  padding-left: 20px;
+}
+
+.trap {
+  color: var(--orange);
+}
+
+@keyframes slide {
+  from {
+    opacity: 0;
+    translate: 0 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .panel {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,13 @@
+.list {
+  margin: 4px 0 0;
+  padding-left: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.list li::before {
+  content: '✗ ';
+  color: var(--red);
+  font-weight: 700;
+}

@@ -1,0 +1,29 @@
+.flow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 6px 0 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.box {
+  border: 2px solid var(--ink);
+  background: var(--card, var(--yellow));
+  color: var(--ink);
+  padding: 2px 6px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.lanes {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.arrow {
+  color: var(--muted);
+  font-weight: 700;
+}
